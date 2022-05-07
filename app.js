@@ -2,8 +2,11 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-var route = require('./route');
+var logger = require('morgan');
+//require('dotenv').config();
 
+var route = require('./route');
+app.use(logger('dev'));
 app.use('/v1', route);
 app.use('/employee', require('./employee_route'));
 
