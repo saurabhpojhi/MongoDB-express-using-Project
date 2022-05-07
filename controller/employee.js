@@ -50,8 +50,23 @@ var infoEmployee = (req,res) => {
 
 }
 
+var updateEmployee = (req,res) => {
+    
+    Employee.updateOne({_id:req.body.id}, 
+        {$set:{
+            name:req.body.name,
+            email:req.body.email
+        }},
+        function (err, docs) {
+        if(err) throw err;
+        res.status(200).json({
+            message: 'list employees',docs});
+    })
+
+}
 module.exports = {
     addEmployee,
     listEmployee,
-    infoEmployee
+    infoEmployee,
+    updateEmployee
 }
