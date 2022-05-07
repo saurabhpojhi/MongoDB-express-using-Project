@@ -67,9 +67,26 @@ var updateEmployee = (req,res) => {
 
 var queryList = async (req,res)=>{
         var results = await Employee.find(
-            {},
-            {name:1,email:1,'account.age':1, _id:0}    // here select operation perform like suppose we take 1 means only name take if 0 means not 
-            );
+            {                               // this is condition part if you want to email only like saurabh@gmail.com then conditon query apply
+             // email:'saurabh@gmail.com',  // yeha pe is mail id ke jitne v honge woh sab email show hoga
+           // department:'sw',  // here or conditon  
+           // 'account.age':26  // here And condition
+          // 'account.age':{$gt:26}  // yeha pe $Gt means greaterthan 26 se upar ke jitne v age h woh sab show krna chahiye
+           //'account.age':{$gte:26}      // yeha pe $GTE ka matlab  greaterthan 26 se upar ke jitne v age h woh sab show krna chahiye      
+           //'account.age':{$lt:27}      // yeha pe $lt ka matlab  lessthan 27
+
+           // or condtion apply
+          // $or:[{department:'sw'},{'account.age':26}]  // mujhe sw department chahiye jinki age 26 ho
+          
+          // like 
+        //  email:/saurabh/    // yeha pe jinke saurabh se email hone woh sab show karega like ke throw
+
+
+            },
+            {name:1,email:1,'account.age':1, _id:0, department:1}    // here select operation perform like suppose we take 1 means only name take if 0 means not 
+            ).sort({name:-1})
+            .distinct('department') ;  //limit(2);    // here sort and limit uses 
+           // .count({'account.mailId':{$exists:true}});      // here count 
         res.status(200).json({
             message:'query', record:results
         });

@@ -1,0 +1,11 @@
+   
+Select   
+where condition 
+less than, greater than
+or 
+and
+limit 
+like
+distinct
+regrex
+
