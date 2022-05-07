@@ -51,7 +51,7 @@ var infoEmployee = (req,res) => {
 }
 
 var updateEmployee = (req,res) => {
-    
+
     Employee.updateOne({_id:req.body.id}, 
         {$set:{
             name:req.body.name,
@@ -64,9 +64,21 @@ var updateEmployee = (req,res) => {
     })
 
 }
+
+var queryList = async (req,res)=>{
+        var results = await Employee.find(
+            {},
+            {name:1,email:1,'account.age':1, _id:0}    // here select operation perform like suppose we take 1 means only name take if 0 means not 
+            );
+        res.status(200).json({
+            message:'query', record:results
+        });
+}
+
 module.exports = {
     addEmployee,
     listEmployee,
     infoEmployee,
-    updateEmployee
+    updateEmployee,
+    queryList
 }
