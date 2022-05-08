@@ -85,8 +85,8 @@ var queryList = async (req,res)=>{
             },
             {name:1,email:1,'account.age':1, _id:0, department:1}    // here select operation perform like suppose we take 1 means only name take if 0 means not 
             ).sort({name:-1})
-            .distinct('department') ;  //limit(2);    // here sort and limit uses 
-           // .count({'account.mailId':{$exists:true}});      // here count 
+           /// .distinct('department') ;  //limit(2);    // here sort and limit uses 
+            .count({'account.mailId':{$exists:true}});      // here count 
         res.status(200).json({
             message:'query', record:results
         });
