@@ -28,8 +28,7 @@ var listEmployee = (req,res) => {
     }
     Employee.find(query, function (err, docs) {
         if(err) throw err;
-        res.status(200).json({
-            message: 'list employees',docs});
+        res.status(200).json({Success:true, message: 'list employees',docs});
     })
 
 }
@@ -40,8 +39,7 @@ var infoEmployee = (req,res) => {
     }
     Employee.find(query, function (err, docs) {
         if(err) throw err;
-        res.status(200).json({
-            message: 'list employees',docs});
+        res.status(200).json({Success:true, message: 'list employees',docs});
     })
 
 }
@@ -55,8 +53,7 @@ var updateEmployee = (req,res) => {
         }},
         function (err, docs) {
         if(err) throw err;
-        res.status(200).json({
-            message: 'list employees',docs});
+        res.status(200).json({Success:true,message: 'list employees',docs});
     })
 
 }
@@ -83,9 +80,7 @@ var queryList = async (req,res)=>{
             ).sort({name:-1})
            /// .distinct('department') ;  //limit(2);    // here sort and limit uses 
             .count({'account.mailId':{$exists:true}});      // here count 
-        res.status(200).json({
-            message:'query', record:results
-        });
+        res.status(200).json({Success:true,message:'query', record:results});
 }
 
 module.exports = {
