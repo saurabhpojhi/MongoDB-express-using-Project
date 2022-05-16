@@ -1,6 +1,6 @@
 const express = require('express');
 var router = express.Router();
-var empCtrl = require('./controller/employee');
+var empCtrl = require('../controller/employee');
 
 var bodyParser = require('body-parser');
 //var urlencodedParser = bodyParser.urlencoded({extended:false});

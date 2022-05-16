@@ -16,14 +16,10 @@ var addEmployee = (req, res) => {
         }
     });
     data.save().then((result) => {
-        res.status(200).json({
-            message: 'Employee added successfuly', record:result
-        })
+        res.status(200).json({Success:true,message: 'Employee added successfuly', record:result})
     })
-        .catch(err => console.log(err));
-    res.status(200).json({
-        message: 'add employees Successfully'
-    });
+    .catch(err => console.log(err));
+    
 }
 
 var listEmployee = (req,res) => {
