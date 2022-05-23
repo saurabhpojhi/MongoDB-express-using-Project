@@ -1,13 +1,18 @@
 const Employee = require('../models/employee');
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 var addEmployee = (req, res) => {
     //console.log(req.body);
+   var salt = bcrypt.genSaltSync(10);
+console.log(salt);
 
+   var password = bcrypt.hashSync(req.body.password,salt);
     var data = new Employee({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
         email: req.body.email,
+        password:password,
         department: req.body.department,
         account: {
             mailId: req.body.mailId,

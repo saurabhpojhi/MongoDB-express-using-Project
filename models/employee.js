@@ -4,6 +4,7 @@ var employeeSchema = new mongoose.Schema({
     _id:mongoose.Schema.Types.ObjectId,
     name:String,
     email:String,
+    password:String,
     department:String,
     account:{
         mailId:String,
