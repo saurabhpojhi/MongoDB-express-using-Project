@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 router.use(bodyParser.json());
 
 router.post('/add',empCtrl.addEmployee);
+router.post('/login',empCtrl.login);
 router.get('/list',empCtrl.listEmployee);
 router.get('/info/:id',empCtrl.infoEmployee);
 router.put('/update',empCtrl.updateEmployee);
