@@ -31,7 +31,7 @@ console.log(salt);
        let response = 'login API';
        var result = await Employee.findOne({email:req.body.email},{});
        var match =  await bcrypt.Compare(req.body.password, result.password)
-      // console.log(match)
+       console.log(match)
       
        res.status(200).json({Success:true, message:'Token', token:result});
 
