@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 var addEmployee = (req, res) => {
-    //console.log(req.body);
+    console.log(req.body);
    var salt = bcrypt.genSaltSync(10);
 console.log(salt);
 
